@@ -1,5 +1,8 @@
 package racingcar.core;
 
+import java.util.StringTokenizer;
+
+import racingcar.model.Car;
 import racingcar.model.Cars;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -15,8 +18,7 @@ public class RacingCarGameExecutor {
 	}
 
 	public void start() {
-		String carNamesInput = this.inputView.makeRacingCarNameInput();
-		Cars cars = new Cars(carNamesInput);
+		Cars cars = this.generateCars();
 
 		String attemptInput = this.inputView.makeAttemptInput();
 		int attemptCount = Integer.parseInt(attemptInput);
@@ -27,4 +29,18 @@ public class RacingCarGameExecutor {
 
 		this.inputView.closeScanner();
 	}
+
+	private Cars generateCars() {
+		String carNamesInput = this.inputView.makeRacingCarNameInput();
+		StringTokenizer stringTokenizer = new StringTokenizer(carNamesInput, ",");
+
+		Cars cars = new Cars();
+		while (stringTokenizer.hasMoreElements()) {
+			String carName = stringTokenizer.nextToken();
+			cars.addCar(new Car(carName));
+		}
+
+		return cars;
+	}
+
 }
