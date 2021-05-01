@@ -23,10 +23,12 @@ public class RacingCarGameExecutor {
 		String attemptInput = this.inputView.makeAttemptInput();
 		int attemptCount = Integer.parseInt(attemptInput);
 
+		this.outputView.printResultMessage();
 		for (int i = 0; i < attemptCount; i++) {
 			RacingCarGame.getInstance().race(cars);
+			this.outputView.printRacingResult(cars);
 		}
-
+		this.outputView.printWinners(cars);
 		this.inputView.closeScanner();
 	}
 

@@ -33,11 +33,30 @@ public class Car implements Comparable<Car> {
 		}
 	}
 
+	public String getCarRacingResult() {
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append(this.name)
+			.append(" : ")
+			.append(this.getMoveDistance());
+
+		return stringBuilder.toString();
+	}
+
+	private String getMoveDistance() {
+		StringBuilder stringBuilder = new StringBuilder();
+
+		for (int i = 0; i < this.moveCount; i++) {
+			stringBuilder.append("-");
+		}
+
+		return stringBuilder.toString();
+	}
+
 	@Override
 	public int compareTo(Car car) {
-		if(this.moveCount < car.moveCount) {
+		if (this.moveCount < car.moveCount) {
 			return 1;
-		}else if(this.moveCount == car.moveCount) {
+		} else if (this.moveCount == car.moveCount) {
 			return 0;
 		}
 		return -1;
