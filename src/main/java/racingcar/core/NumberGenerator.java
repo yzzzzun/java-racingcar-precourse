@@ -12,7 +12,6 @@ public class NumberGenerator {
 	}
 
 	public int getRandomNumber() {
-		this.random.setSeed(System.currentTimeMillis());
 		return this.random.nextInt(RANDOM_BOUND);
 	}
 }
