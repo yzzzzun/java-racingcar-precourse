@@ -2,7 +2,7 @@ package racingcar.model;
 
 import racingcar.exception.RacingCarException;
 
-public class Car {
+public class Car implements Comparable<Car> {
 
 	private static final int MAX_CARNAME_LENGTH = 5;
 	private static final String CARNAME_EXCEPTION_MESSAGE = "자동차명은 5자리 이하로 입력하세요.";
@@ -31,6 +31,16 @@ public class Car {
 		if (randomNumber >= 4) {
 			this.moveCount++;
 		}
+	}
+
+	@Override
+	public int compareTo(Car car) {
+		if(this.moveCount < car.moveCount) {
+			return 1;
+		}else if(this.moveCount == car.moveCount) {
+			return 0;
+		}
+		return -1;
 	}
 
 }
