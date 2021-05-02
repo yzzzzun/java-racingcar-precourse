@@ -3,18 +3,21 @@ package racingcar.model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.StringTokenizer;
+
+import racingcar.core.NumberMovingStrategy;
 
 public class Cars {
 
 	private static final int FIRST_INDEX = 0;
-	private List<Car> cars;
+	private final List<Car> cars = new ArrayList<>();
 
-	public Cars() {
-		this.cars = new ArrayList<>();
-	}
-
-	public void addCar(Car car) {
-		this.cars.add(car);
+	public Cars(String carNamesInput) {
+		StringTokenizer stringTokenizer = new StringTokenizer(carNamesInput, ",");
+		while (stringTokenizer.hasMoreElements()) {
+			String carName = stringTokenizer.nextToken();
+			this.cars.add(new Car(carName));
+		}
 	}
 
 	public List<Car> getCars() {
@@ -40,6 +43,10 @@ public class Cars {
 		if (firstCar.getMoveCount() == nextCar.getMoveCount()) {
 			winner.add(nextCar);
 		}
+	}
+
+	public void moveCars() {
+		this.cars.forEach(car -> car.moveCar(new NumberMovingStrategy()));
 	}
 
 }

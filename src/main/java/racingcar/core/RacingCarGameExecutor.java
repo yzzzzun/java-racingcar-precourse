@@ -1,8 +1,5 @@
 package racingcar.core;
 
-import java.util.StringTokenizer;
-
-import racingcar.model.Car;
 import racingcar.model.Cars;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -34,15 +31,8 @@ public class RacingCarGameExecutor {
 
 	private Cars generateCars() {
 		String carNamesInput = this.inputView.makeRacingCarNameInput();
-		StringTokenizer stringTokenizer = new StringTokenizer(carNamesInput, ",");
 
-		Cars cars = new Cars();
-		while (stringTokenizer.hasMoreElements()) {
-			String carName = stringTokenizer.nextToken();
-			cars.addCar(new Car(carName));
-		}
-
-		return cars;
+		return new Cars(carNamesInput);
 	}
 
 }

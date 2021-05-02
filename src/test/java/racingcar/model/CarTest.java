@@ -39,17 +39,17 @@ class CarTest {
 	}
 
 	@Test
-	@DisplayName("랜덤 숫자가 4이상이면 1칸이동")
+	@DisplayName("랜덤숫자가 4이상으로 이동가능할때 moveCount 증가 확인")
 	void 숫자가_4이상이면_자동차이동() {
-		this.car.moveByRandomNumber(4);
+		this.car.moveCar(() -> true);
 		int moveCount = car.getMoveCount();
 		assertThat(moveCount).isEqualTo(1);
 	}
 
 	@Test
-	@DisplayName("랜덤 숫자가 3이하이면 정지")
+	@DisplayName("랜덤숫자가 3이하로 이동가능하지 않을때 moveCount 증가하지 않음을 확인")
 	void 숫자가_3이하이면_자동차이동안함() {
-		this.car.moveByRandomNumber(3);
+		this.car.moveCar(() -> false);
 		int moveCount = car.getMoveCount();
 		assertThat(moveCount).isEqualTo(0);
 	}

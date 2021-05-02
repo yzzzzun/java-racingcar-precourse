@@ -1,5 +1,6 @@
 package racingcar.model;
 
+import racingcar.core.MovingStrategy;
 import racingcar.exception.RacingCarException;
 
 public class Car implements Comparable<Car> {
@@ -28,8 +29,8 @@ public class Car implements Comparable<Car> {
 		return this.moveCount;
 	}
 
-	public void moveByRandomNumber(int randomNumber) {
-		if (randomNumber >= 4) {
+	public void moveCar(MovingStrategy movingStrategy) {
+		if (movingStrategy.moveable()) {
 			this.moveCount++;
 		}
 	}
