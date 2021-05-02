@@ -3,7 +3,6 @@ package racingcar.model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.StringJoiner;
 
 public class Cars {
 
@@ -22,25 +21,25 @@ public class Cars {
 		return this.cars;
 	}
 
-	public String getWinners() {
+	public List<Car> getWinner() {
 		Collections.sort(this.cars);
 
-		Car winnerCar = this.cars.get(FIRST_INDEX);
-		int max = winnerCar.getMoveCount();
-
-		StringJoiner joiner = new StringJoiner(", ");
-		joiner.add(winnerCar.getName());
+		List<Car> winner = new ArrayList<>();
+		Car firstCar = this.cars.get(FIRST_INDEX);
+		winner.add(firstCar);
 
 		for (int i = 1; i < this.cars.size(); i++) {
-			Car car = this.cars.get(i);
-			this.addCoWinner(max, joiner, car);
+			Car nextCar = this.cars.get(i);
+			this.getCoWinner(winner, firstCar, nextCar);
 		}
-		return joiner.toString();
+
+		return winner;
 	}
 
-	private void addCoWinner(int max, StringJoiner joiner, Car coWinner) {
-		if (max == coWinner.getMoveCount()) {
-			joiner.add(coWinner.getName());
+	private void getCoWinner(List<Car> winner, Car firstCar, Car nextCar) {
+		if (firstCar.getMoveCount() == nextCar.getMoveCount()) {
+			winner.add(nextCar);
 		}
 	}
+
 }

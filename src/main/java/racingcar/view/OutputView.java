@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import java.util.List;
+import java.util.StringJoiner;
 
 import racingcar.model.Car;
 import racingcar.model.Cars;
@@ -26,11 +27,18 @@ public class OutputView extends View {
 	}
 
 	public void printWinners(Cars cars) {
-		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append(cars.getWinners())
-			.append(WINNER_MESSAGE);
+		List<Car> winner = cars.getWinner();
+		String winnerNames = this.getWinnerNames(winner);
+		String resultMessage = String.format("%s%s", winnerNames, WINNER_MESSAGE);
+		out.println(resultMessage);
+	}
 
-		out.println(stringBuilder.toString());
+	private String getWinnerNames(List<Car> winner) {
+		StringJoiner joiner = new StringJoiner(", ");
+		for (Car car : winner) {
+			joiner.add(car.getName());
+		}
+		return joiner.toString();
 	}
 
 }

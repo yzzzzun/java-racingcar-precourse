@@ -68,8 +68,9 @@ class CarsTest {
 	@Test
 	@DisplayName("1등 자동차 목록 반환")
 	void 우승자동차확인() {
-		String winners = this.cars.getWinners();
-		assertThat(winners).isEqualTo("test1, test3");
+		List<Car> winner = this.cars.getWinner();
+		assertThat(winner.get(0).getName()).isEqualTo("test1");
+		assertThat(winner.get(1).getName()).isEqualTo("test3");
 	}
 
 }
