@@ -46,7 +46,7 @@ public class Cars {
 	}
 
 	public void moveCars() {
-		this.cars.forEach(car -> car.moveCar(new NumberMovingStrategy()));
+		this.cars.forEach(car -> car.moveCar(NumberMovingStrategy.getInstance()));
 	}
 
 }

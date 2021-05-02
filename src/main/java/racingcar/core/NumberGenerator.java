@@ -7,7 +7,15 @@ public class NumberGenerator {
 	private static final int RANDOM_BOUND = 10;
 	private final Random random;
 
-	public NumberGenerator() {
+	private static class LazyHolder {
+		private static final NumberGenerator INSTANCE = new NumberGenerator();
+	}
+
+	public static NumberGenerator getInstance() {
+		return LazyHolder.INSTANCE;
+	}
+
+	private NumberGenerator() {
 		this.random = new Random();
 	}
 
