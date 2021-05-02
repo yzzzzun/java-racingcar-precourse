@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.StringTokenizer;
 
-import racingcar.core.NumberMovingStrategy;
+import racingcar.core.RandomMovingStrategy;
 
 public class Cars {
 
@@ -46,7 +46,7 @@ public class Cars {
 	}
 
 	public void moveCars() {
-		this.cars.forEach(car -> car.moveCar(NumberMovingStrategy.getInstance()));
+		this.cars.forEach(car -> car.moveCar(RandomMovingStrategy.getInstance()));
 	}
 
 }

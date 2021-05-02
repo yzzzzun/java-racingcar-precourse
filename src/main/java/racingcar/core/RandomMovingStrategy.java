@@ -1,19 +1,19 @@
 package racingcar.core;
 
-public class NumberMovingStrategy implements MovingStrategy {
+public class RandomMovingStrategy implements MovingStrategy {
 
 	private static final int MOVABLE_CONDITION = 4;
 	private NumberGenerator numberGenerator;
 
 	private static class LazyHolder {
-		private static final NumberMovingStrategy INSTANCE = new NumberMovingStrategy();
+		private static final RandomMovingStrategy INSTANCE = new RandomMovingStrategy();
 	}
 
-	public static NumberMovingStrategy getInstance() {
+	public static RandomMovingStrategy getInstance() {
 		return LazyHolder.INSTANCE;
 	}
 
-	private NumberMovingStrategy() {
+	private RandomMovingStrategy() {
 		this.numberGenerator = NumberGenerator.getInstance();
 	}
 

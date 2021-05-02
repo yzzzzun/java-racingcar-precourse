@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import racingcar.exception.RacingCarException;
 
@@ -19,22 +21,22 @@ class CarTest {
 		this.car = new Car("car");
 	}
 
-	@Test
+	@ParameterizedTest
+	@ValueSource(strings = {"car1"})
 	@DisplayName("입력된 이름으로 자동차 명이 생성되는지 확인")
-	void 입력된이름으로_자동차생성확인() {
+	void 입력된이름으로_자동차생성확인(String expected) {
 
-		String expected = "Car1";
 		Car car = new Car(expected);
 		String actual = car.getName();
 		assertThat(actual).isEqualTo(expected);
 	}
 
-	@Test
+	@ParameterizedTest
+	@ValueSource(strings = {"test123, CarCar, fiveOver"})
 	@DisplayName("자동차명이 5자 이상이면 오류발생")
-	void 자동차명_오류확인() {
-
+	void 자동차명_오류확인(String carName) {
 		assertThatExceptionOfType(RacingCarException.class).isThrownBy(() -> {
-			new Car("CarCar");
+			new Car(carName);
 		}).withMessageMatching(CARNAME_EXCEPTION_MESSAGE);
 	}
 

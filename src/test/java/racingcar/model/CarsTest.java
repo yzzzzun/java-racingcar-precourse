@@ -33,7 +33,7 @@ class CarsTest {
 	}
 
 	@Test
-	@DisplayName("사용자 입력으로 cars가 정상적으로 생성되는지 확인")
+	@DisplayName("사용자 입력으로 cars가 정상적으로 생성되는지, 조건에 맞게 moveCount가 증가하는지 확인")
 	void Cars_생성테스트() {
 
 		List<Car> carList = this.cars.getCars();
